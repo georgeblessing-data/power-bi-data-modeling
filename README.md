@@ -28,6 +28,12 @@ I also organised the tables into folders and named columns consistently. Tables 
 
 Throughout this stage, I worked with one principle in mind: **every column had to earn its place in the model.**
 
+#### Power Query Transformation
+
+The transformation process included merging and expanding queries, removing and reordering columns, standardising column names, and organising queries into staging, dimension, fact, and support groups.
+
+![Power Query Data Transformation](images/04-data-transformation.png)
+
 ### Building the fact and dimension structure
 
 With a clearer understanding of the data and its grain, I built fact and dimension tables around the business processes represented in the dataset.
@@ -42,6 +48,10 @@ The overall process brought together business understanding, data exploration, t
 
 I also created **row-level security (RLS)** in the model as part of the project.
 
+I implemented dynamic regional access using a security table and a DAX rule that identifies the current user and filters the model according to the region assigned to that user.
+
+![Row-Level Security Configuration](images/05-row-level-security.png)
+
 ## Model Development
 
 The screenshots document three stages of the project:
@@ -49,6 +59,23 @@ The screenshots document three stages of the project:
 **Original Model → Work in Progress → Final Model**
 
 They show the progression from the initial loaded tables to the structure developed through the modelling process.
+### Original Model
+
+This was the starting point after loading the source data. The tables still reflected the original source structure and required significant restructuring before they could support an effective analytical model.
+
+![Original Data Model](images/01-original-model.png)
+
+### Work in Progress
+
+At this stage, I had started separating the data into fact and dimension tables, cleaning the structure, and creating relationships around the business processes.
+
+![Model Work in Progress](images/02-model-in-progress.png)
+
+### Final Model
+
+The final model contains multiple fact tables connected through shared dimensions, resulting in a galaxy schema designed to support different analytical processes without directly connecting fact tables to one another.
+
+![Final Data Model](images/03-final-model.png)
 
 ## Key Takeaway
 
